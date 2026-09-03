@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.11.8'
+    id 'net.fabricmc.fabric-loom' version '1.15'
     id 'maven-publish'
 }
 
@@ -16,13 +16,10 @@ repositories {
 }
 
 dependencies {
-    // Unobfuscated Minecraft 26.1.2 Setup
+    // Unobfuscated Minecraft 26.1.2 setup: NO mappings dependency allowed
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings loom.officialMojangMappings()
-    
+
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    
-    // Optional: Fabric API
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 }
 
