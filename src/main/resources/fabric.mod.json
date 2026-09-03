@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "mouseunlock",
+  "version": "${version}",
+  "name": "Mouse Unlock",
+  "description": "Unlocks the mouse cursor in-game.",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/mouseunlock/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.example.mouseunlock.FabricMouseUnlockMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "~1.21",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
