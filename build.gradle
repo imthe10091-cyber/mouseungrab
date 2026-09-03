@@ -1,12 +1,8 @@
 plugins {
-    id 'fabric-loom' version '1.11-SNAPSHOT'
+    id 'fabric-loom' version '1.11.8'
+    id 'maven-publish'
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
-    }
-}
 version = project.mod_version
 group = project.maven_group
 
@@ -15,17 +11,19 @@ base {
 }
 
 repositories {
-    // Add repositories here if using external dependencies (e.g., ModMenu, Cloth Config)
     mavenCentral()
+    maven { name = "Fabric"; url = "https://maven.fabricmc.net/" }
 }
 
 dependencies {
+    // Unobfuscated Minecraft 26.1.2 Setup
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    
-    // Replace Yarn with Mojang Mappings:
     mappings loom.officialMojangMappings()
     
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    
+    // Optional: Fabric API
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 }
 
 processResources {
@@ -52,9 +50,7 @@ java {
 }
 
 jar {
-    from("LICENSE") {
-        rename { "${it}_${project.archives_base_name}" }
-    }
+    from("LICENSE")
 }
 
 publishing {
@@ -62,8 +58,5 @@ publishing {
         mavenJava(MavenPublication) {
             from components.java
         }
-    }
-    repositories {
-        // Configure maven publishing here if needed
     }
 }
