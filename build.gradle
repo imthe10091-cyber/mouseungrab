@@ -50,7 +50,7 @@ java {
 
 jar {
     from("LICENSE") {
-        rename "${project.archives_base_name}_${it.path}", "${it.path}"
+        rename { "${it}_${project.archives_base_name}" }
     }
 }
 
